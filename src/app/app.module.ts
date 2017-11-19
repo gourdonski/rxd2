@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatFormFieldModule, MatInputModule, MatSelectModule } from '@angular/material';
+import { MatButtonModule, MatFormFieldModule, MatInputModule, MatSelectModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +20,9 @@ import * as Shared from './shared';
     BrowserModule,
     BrowserAnimationsModule,
     HttpModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
@@ -26,9 +30,9 @@ import * as Shared from './shared';
   ],
   providers: [
     Bungie.BungieApiService,
-    { provide: Bungie.API_KEY, useValue: Bungie.API_KEY.toString() },
-    { provide: Bungie.API_KEY_HEADER, useValue: Bungie.API_KEY_HEADER.toString() },
-    { provide: Bungie.API_ROOT_PATH, useValue: Bungie.API_ROOT_PATH.toString() },
+    { provide: Bungie.API_KEY, useValue: Bungie.ApiKey },
+    { provide: Bungie.API_KEY_HEADER, useValue: Bungie.ApiKeyHeader },
+    { provide: Bungie.API_ROOT_PATH, useValue: Bungie.ApiRootPath },
     Shared.HelperService,
     Shared.HttpHelperService
   ],
