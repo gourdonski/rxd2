@@ -15,6 +15,6 @@ export class PlayerSearchComponent implements OnInit {
   ngOnInit() {
     this.membershipTypes = this.helper
       .getEnumKeys(BungieMembershipType)
-      .map((key: string) => ({ name: key, value: BungieMembershipType[key] }));
+      .map((key: string) => ({ name: BungieMembershipType[key], value: key }));
   }
 }
