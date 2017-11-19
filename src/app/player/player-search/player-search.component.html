@@ -1,0 +1,13 @@
+<form class="dl-player-search-form">
+    <mat-form-field class="dl-display-name">
+        <input matInput placeholder="Display name">
+    </mat-form-field>
+
+    <mat-form-field class="dl-membership-type">
+        <mat-select placeholder="Membership type">
+            <mat-option *ngFor="let membershipType of membershipTypes" [value]="membershipType.value">
+                {{ membershipType.name }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+  </form>
