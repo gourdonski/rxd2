@@ -1,8 +1,8 @@
 export interface BungieResponse<T> {
-    response: Array<T>,
-    errorCode: number;
-    throttleSeconds: number;
-    errorStatus: string;
-    message: string;
-    messageData: {};
+    ErrorCode: number;
+    ErrorStatus: string;
+    Message: string;
+    MessageData: {};
+    Response: Array<T>;
+    ThrottleSeconds: number;
 }

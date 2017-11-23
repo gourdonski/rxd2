@@ -31,12 +31,12 @@ export class BungieApiService {
 
   private extractResponse<T>(response: BungieResponse<T>): T | Array<T> {
     if (this.hasSuccessResponse(response))
-      return response.response.length === 1 ? response.response[0] : response.response;
+      return response.Response.length === 1 ? response.Response[0] : response.Response;
   
     throw 'Received error response from Bungie';
   }
 
   private hasSuccessResponse<T>(response: BungieResponse<T>): boolean {
-    return response.response != null && response.response.length > 0 && response.errorStatus === BungieResponseErrorStatus.Success;
+    return response.Response != null && response.Response.length > 0 && response.ErrorStatus === BungieResponseErrorStatus.Success;
   }
 }

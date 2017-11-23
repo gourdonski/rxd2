@@ -30,6 +30,8 @@ export class PlayerSearchComponent implements OnInit {
 
     this.destinyPlayer$ = this.store.select(state => state.destinyPlayer);
 
+    this.destinyPlayer$.subscribe(console.log);
+
     this.playerSearchForm = this.formBuilder.group({
       displayName: [ '', Validators.required ],
       membershipType: [ '', Validators.required ]

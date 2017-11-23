@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatFormFieldModule, MatInputModule, MatSelectModule } from '@angular/material';
 
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,6 +31,7 @@ import * as Store from './store';
     MatInputModule,
     MatSelectModule,
     StoreModule.forRoot({ destinyPlayer: Store.destinyPlayerReducer }),
+    EffectsModule.forRoot([ Store.DestinyPlayerEffects ]),
     AppRoutingModule
   ],
   providers: [
