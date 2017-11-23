@@ -3,6 +3,7 @@ import { Http, Headers } from '@angular/http';
 
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/take';
 
 import { API_ROOT_PATH, API_KEY_HEADER, API_KEY } from '../bungie-api-config';
 import { BungieMembershipType, BungieResponseErrorStatus, BungieResponse, DestinyPlayer, HttpHelperService } from '../../shared';
@@ -24,6 +25,7 @@ export class BungieApiService {
       .get(`${this.apiRootPath}/Destiny2/SearchDestinyPlayer/${membershipType}/${displayName}`, {
         headers: this.apiRequestHeader
       })
+      .take(1)
       .map((response: BungieResponse<DestinyPlayer>) => <DestinyPlayer>this.extractResponse(response));
   }
 

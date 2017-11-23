@@ -1,34 +1,44 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
-import 'rxjs/add/operator/first';
+import { Store } from '@ngrx/store';
+
+import { Observable } from 'rxjs';
+import 'rxjs/add/operator/take';
 
 import { BungieApiService } from '../../bungie';
-import { BungieMembershipType, DestinyPlayer, HelperService } from '../../shared';
+import { BungieMembershipType, DestinyPlayer, HelperService, PlayerSearch, SelectOption } from '../../shared';
+import { DestinyPlayerState, SearchAction } from '../../store';
 
 @Component({
   selector: 'player-search',
   templateUrl: './player-search.component.html'
 })
 export class PlayerSearchComponent implements OnInit {
-  private membershipTypes: { name: string, value: any }[];
+  private membershipTypes: SelectOption[];
 
-  private displayName: FormControl = new FormControl();
+  private destinyPlayer$: Observable<DestinyPlayer>;
 
-  private membershipType: FormControl = new FormControl();
+  playerSearchForm: FormGroup;
 
-  constructor(private apiService: BungieApiService, private helper: HelperService) { }
+  constructor(private apiService: BungieApiService, private formBuilder: FormBuilder, private helper: HelperService, private store: Store<DestinyPlayerState>) { }
 
   ngOnInit() {
     this.membershipTypes = this.helper
       .getEnumKeys(BungieMembershipType)
-      .map((key: string) => ({ name: BungieMembershipType[key], value: key }));
+      .map((key: string) => (new SelectOption(BungieMembershipType[key], key)));
+
+    this.destinyPlayer$ = this.store.select(state => state.destinyPlayer);
+
+    this.playerSearchForm = this.formBuilder.group({
+      displayName: [ '', Validators.required ],
+      membershipType: [ '', Validators.required ]
+    });
   }
 
   search() {
-    const player = this.apiService
-      .getDestinyPlayer(this.membershipType.value, this.displayName.value)
-      .first()
-      .subscribe((player: DestinyPlayer) => console.log(player));
+    const playerSearch: PlayerSearch = this.playerSearchForm.value;
+
+    this.store.dispatch(new SearchAction(new PlayerSearch(playerSearch.displayName, playerSearch.membershipType)));
   }
 }

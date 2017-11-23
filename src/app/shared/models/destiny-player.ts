@@ -6,3 +6,12 @@ export interface DestinyPlayer {
     membershipId: string;
     displayName: string;
 }
+
+export function createMockDestinyPlayer(): DestinyPlayer {
+    return {
+        iconPath: '',
+        membershipType: 0,
+        membershipId: '',
+        displayName: ''
+    };
+}

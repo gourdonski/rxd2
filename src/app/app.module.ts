@@ -5,11 +5,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatFormFieldModule, MatInputModule, MatSelectModule } from '@angular/material';
 
+import { StoreModule } from '@ngrx/store';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import * as Bungie from './bungie';
 import * as Player from './player';
 import * as Shared from './shared';
+import * as Store from './store';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,7 @@ import * as Shared from './shared';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    StoreModule.forRoot({ destinyPlayer: Store.destinyPlayerReducer }),
     AppRoutingModule
   ],
   providers: [
