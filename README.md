@@ -1,7 +1,7 @@
 ![DestinyBanner](https://user-images.githubusercontent.com/4038675/33161305-d355c1e0-cfdf-11e7-8eea-9c388fc721d4.jpg)
 # RxD2
 
-Messing around with the Bungie API.
+Messing around with the Bungie API for Destiny 2 and ngrx because I ran out of end-game content.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.2.
 
