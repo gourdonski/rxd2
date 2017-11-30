@@ -3,6 +3,8 @@
 
 Messing around with the Bungie API for Destiny 2 and ngrx because I ran out of end-game content while waiting for the first DLC to drop.
 
+Based on [this tutorial](https://medium.com/@nomanbinhussein/getting-started-with-ngrx-5cec2788b25f) by Noman Hasan and the ngrx [example app](https://github.com/ngrx/example-app).
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.2.
 
 ## Development server
